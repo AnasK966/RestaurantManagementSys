@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{%block title %}
+
+
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='raw-material.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='base_font.css') }}">
+{% endblock head%}
+{% block admin%}
+<h3>Hey {{admin}}!</h3>
+{% endblock admin %}
+
+{% block codeblock %}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="font-size:xx-large;" class="modal-title" id="exampleModalLabel">Add Stock
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="{{url_for('add_raw')}}" method="POST">
+                    <div class="form-group form">
+                        <label for="first_name">Ingredient Name</label>
+                        <input type="text" class="form-control" aria-describedby="name" name="Iname"
+                            placeholder="Enter Ingredient Name">
+                    </div>
+                    <div class="form-group form">
+                        <label for="first_name">Ingredient ID</label>
+                        <input type="text" class="form-control" aria-describedby="name" name="id"
+                            placeholder="Enter Ingredient ID">
+                    </div>
+                    <div class="form-group form">
+                        <label for="last_name">Quantity bought</label>
+                        <input type="text" class="form-control" id="last_name" name="qtyb"
+                            placeholder="Quantity bought">
+                    </div>
+                    <div class="form-group form">
+                        <label for="phone_no">Measuring unit</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Measuring unit" name="unit">
+                    </div>
+                    <div class="form-group form">
+                        <label for="address">Unit Cost</label>
+                        <input type="text" class="form-control" id="address" name="ucost"
+                            placeholder="Enter Unit Cost ">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark">ADD</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class=" body-div-5">
+    <div class=" add-button">
+        <button type="button" class="btn btn-dark" id="add_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Stock
+        </button>
+    </div>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th scope="col">INV. ID</th>
+                <th scope="col">INGREDIENT NAME</th>
+                <th scope="col">QTY BOUGHT</th>
+                <th scope="col">M_UNIT</th>
+                <th scope="col">UNIT COST</th>
+                <th scope="col">TOTAL COST</th>
+                <th scope="col">CURRENT QUANTITY</th>
+                <th scope="col">DATE</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for data in raw_data%}
+            <tr class="t-row">
+                <!-- <th scope="row">1</th> -->
+                <td>{{data.0}}</td>
+                <td>{{data.1}}</td>
+                <td>{{data.2}}</td>
+                <td>{{data.3}}</td>
+                <td>{{data.4}}</td>
+                <td>{{data.5}}</td>
+                <td>{{data.7}}</td>
+                <td>{{data.6}}</td>
+                <td><button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal{{data.0}}">
+                        EDIT </button></td>
+
+            </tr>
+            <div class="modal fade" id="exampleModal{{data.0}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 style="font-size:xx-large;" class="modal-title" id="exampleModalLabel">Add Stock
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form action="{{url_for('edit_raw')}}" method="POST">
+                                <div class="form-group form">
+                                    <label for="first_name">Ingredient Name</label>
+                                    <input type="text" class="form-control" aria-describedby="name" name="Iname"
+                                        value="{{data.1}}" placeholder="Enter Ingredient Name">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="first_name">Ingredient ID</label>
+                                    <input type="text" class="form-control" aria-describedby="name" name="id"
+                                        value="{{data.0}}" placeholder="Enter Ingredient ID ">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="last_name">Quantity bought</label>
+                                    <input type="text" class="form-control" id="last_name" name="qtyb"
+                                        placeholder="Quantity bought">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="address">Unit Cost</label>
+                                    <input type="text" class="form-control" id="address" name="ucost" value="{{data.4}}"
+                                        placeholder="Enter Unit Cost ">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-dark">ADD</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock codeblock %}

@@ -1,0 +1,277 @@
+.border {
+  border: 2px solid black;
+}
+
+body {
+  font-family: 'Mukta';
+}
+
+/* SAME HEADER CSS FOR ALL PAGES */
+.header-div-1 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-div-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.sub-div-2 {
+  padding: 10px;
+}
+
+.sub-div-2:hover {
+  background-color: #4db4db;
+  border-radius: 20px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+
+.log-out {
+  background-color: rgb(25, 101, 201);
+  border-radius: 5px;
+  padding: 13px;
+  height: 55px;
+}
+
+.log-out > h4 > a {
+  text-decoration: none;
+  color: black;
+}
+
+.log-out:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: box-shadow;
+}
+/* SAME HEADER CSS FOR ALL PAGES */
+
+/* SAME NAVBAR CSS FOR ALL PAGES */
+.body-div-1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.ver-div {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60px;
+  text-align: center;
+  width: 200px;
+  height: 900px;
+  padding: 7px;
+}
+
+.ver-div > li {
+  display: block;
+  padding: 15px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+
+#ver-li:hover {
+  background-color: #4da4db;
+}
+/* SAME NAVBAR CSS FOR ALL PAGES */
+
+.body-div-2 {
+  display: flex;
+  flex-direction: column;
+  width: 1664px;
+}
+.dash-card1 {
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 5px 5px 5px 5px;
+}
+.dash-card {
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+}
+/* FLOATING BUTTON CSS */
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: black;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+}
+
+.my-float {
+  margin-top: 4px;
+}
+
+.order-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/* FLOATING BUTTON CSS */
+
+/* SAME SEARCH BAR FOR SOME PAGES */
+.body-div-3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.search {
+  margin-left: 200px;
+  border-radius: 20px;
+  width: 800px;
+  height: 30px;
+  font-size: large;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.search-button {
+  height: 20px;
+  border-radius: 20px;
+  padding: 8px;
+}
+/* SAME SEARCH BAR FOR SOME PAGES */
+
+/* ITEMS DIVS */
+.item-div {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.padding {
+  padding: 15px;
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 19px;
+  padding: 20px;
+}
+
+.item-flex {
+  text-align: center;
+  border-radius: 5px;
+  width: 150px;
+  height: 120px;
+}
+
+.item-flex-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-btn-div {
+  border-radius: 6px;
+}
+
+.card-btn-div:hover {
+  background-color: rgb(235, 224, 224);
+}
+
+/* ITEMS DIVS */
+.qty .count {
+  color: #000;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 0 2px;
+  min-width: 35px;
+  text-align: center;
+}
+.qty .plus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 50%;
+}
+.qty .minus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 50%;
+  background-clip: padding-box;
+  position: relative;
+}
+div {
+  text-align: center;
+}
+.minus:hover {
+  background-color: #717fe0 !important;
+}
+.plus:hover {
+  background-color: #717fe0 !important;
+}
+/*Prevent text selection*/
+
+/* input{  
+  border: 0;
+  width: 2%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:disabled{
+  background-color:white;
+} */
+span {
+  cursor: pointer;
+}
+.number {
+  margin: 10px;
+}
+/* .minus, .plus{
+			width:20px;
+			height:20px;
+			background:#f2f2f2;
+			border-radius:4px;
+			padding:8px 5px 8px 5px;
+			border:1px solid #ddd;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+		} */
+input {
+  height: 34px;
+  width: 100px;
+  text-align: center;
+  font-size: 26px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{%block title %}
+
+
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='bill.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='base_font.css') }}">
+{% endblock head %}
+{% block admin%}
+<h3>Hey {{admin}}!</h3>
+{% endblock admin %}
+{% block codeblock %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{ msg }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="padding" style="width:1000px ;">
+    <div class="card" style="margin:20px">
+        <div class="card-body">
+            <div class="table-responsive-sm">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for details in order_details %}
+                        <tr class="t-row">
+                            <td>{{details.0}}</td>
+                            <td>{{details.1}}</td>
+                            <td>{{details.2}}</td>
+                            <td>{{details.3}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-2">
+                </div>
+                <div class="col-lg-4 col-sm-5 ml-auto">
+                    <table class="table table-clear" style="margin-left: 290px;">
+                        <tbody>
+                            <tr>
+                                <td class="left">
+                                    <strong class="text-dark">Total :</strong>
+                                </td>
+                                <td class="right">
+                                    <strong class="text-dark">{{tb}}</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div style=" margin: 20px; margin-left:650px ;">
+            <a href="/del_order"><button class="btn btn-secondary">Close</button></a>
+            <a href="/order_confirm"><button class="btn btn-dark">Place Order</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

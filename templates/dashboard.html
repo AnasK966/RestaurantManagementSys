@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{%block title %}
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='base_font.css') }}">
+{% endblock head %}
+{% block admin%}
+<h3>Hey {{admin}}!</h3>
+{% endblock admin %}
+{% block codeblock %}
+
+<div>
+    <div class="dash-flex-1">
+        <div>
+            <div style="padding: 30px;">
+                <div class="dash-card">
+                    <img src="static/Images/rupee.png" alt="" height="50px" width="50px">
+                    <h3>{{earn}}</h3>
+                    <h5>Total Sales</h5>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="padding: 30px;">
+                <div class="dash-card">
+                    <img src="static/Images/user.png" alt="" height="50px" width="50px">
+
+                    <h3>{{cont}}</h3>
+
+                    <h5>Total Customers</h5>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="padding: 30px;">
+                <div class="dash-card">
+                    <img src="static/Images/order.png" alt="" height="50px" width="50px">
+                    <h3>{{cont_order}}</h3>
+                    <h5>Total Orders</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 100px;">
+        <h3><b>Statistical Overview</b></h3>
+        <!-- <p>A statistical view of the orders this week.</p> -->
+    </div>
+    <div class="dash-flex-2">
+        <!-- #graph -->
+        <div id="chart_div" style="width: 500px;"></div>
+        <div id="chart_div1"></div>
+    </div>
+    <div class="dash-flex-3">
+        <div>
+            <div id="dash-card-2-id" class="dash-card-2">
+                <h3>Most demanded item(This Week)</h3>
+                <ul>
+                    <li>
+                        <h5>{{mfo}}</h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="dash-card-2" style="margin:10px;">
+                <h3>Trending items</h3>
+                <ul>
+                    {% for item in lst %}
+                    <li>
+                        <h5>{{item}}</h5>
+                    </li>
+                   {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock codeblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='chart.js') }}"></script>
+<script>
+    google.charts.load('current', { packages: ['corechart', 'line'] });
+    google.charts.setOnLoadCallback(drawBasic);
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawBasic() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'X');
+        data.addColumn('number', 'total_order');
+
+        data.addRows([
+            {% for key, value in graph.items() %}
+    [{{ key }}, {{ value }}],
+        {% endfor %}
+
+          ]);
+    var options = {
+        'title': 'Orders per week',
+        hAxis: {
+            title: 'Week No'
+        },
+        vAxis: {
+            title: 'Orders'
+        }
+    };
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+        }
+
+
+
+    function drawChart() {
+
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+
+            {% for key, value in ps.items() %}
+    ['{{ key }}', {{ value }}],
+        {% endfor %}
+        
+
+        ]);
+
+
+    var options = {
+        'title': 'Products Sales',
+        is3D: true,
+        width: 500,
+        height: 400
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+    chart.draw(data, options);
+}
+</script>
+
+
+{% endblock js %}

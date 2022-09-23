@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{%block title %}
+
+
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='place_order.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='base_font.css') }}">
+{% endblock head %}
+{% block admin%}
+<h3>Hey {{admin}}!</h3>
+{% endblock admin %}
+{% block codeblock %}
+
+<!-- ITEM DIV-->
+<div style="text-align: center; margin-top: 25px;">
+    <h1>BURGERS</h1>
+</div>
+
+<div class="item-div">
+    {% for prod in product%}
+    <div class="padding">
+        <div class="dash-card1">
+            <h5>{{prod.2}}</h5>
+            <br>
+            <h5>{{prod.5}} RS</h5>
+            <div class="number">
+                <form action="order/{{prod.0}}" method="POST">
+                    <span class="minus"><i class="fas fa-minus"></i></span>
+                    <input type="text" name="{{prod.0}}" id="countburger" value="0" />
+                    <span class="plus"><i class="fas fa-plus"></i></span>
+                    <div>
+                        <button type="submit" id="btnburger" class="btn btn-dark" style="margin:5px;">ADD</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+<a href="/bill"><button class="float"><i class="fas fa-hamburger fa-2x my-float"></i></button></a>
+
+{% endblock codeblock%}
+
+{% block js %}
+<script>
+    $(document).ready(function () {
+        $('.minus').click(function () {
+            var $input = $(this).parent().find('input');
+            var count = parseInt($input.val()) - 1;
+            count = count < 1 ? 0 : count;
+            $input.val(count);
+            $input.change();
+            return false;
+        });
+        $('.plus').click(function () {
+            var $input = $(this).parent().find('input');
+            $input.val(parseInt($input.val()) + 1);
+            $input.change();
+            return false;
+        });
+    });
+</script>
+{% endblock js%}

@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{%block title %}
+
+
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='employees.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='base_font.css') }}">
+{% endblock head %}
+{% block admin%}
+<h3>Hey {{admin}}!</h3>
+{% endblock admin %}
+{% block searchblock %}
+<div style="margin-top: 10px;">
+    <form action="{{url_for('search_emp')}}" method="POST">
+        <div class="search-div" style="margin-left:450px;">
+            <input class="search-bar" name="srch_emp" type="text" placeholder="Enter Employee ID">
+            <button class="search-button"><a href="/search_emp"></a>Search</button>
+        </div>
+    </form>
+</div>
+{% endblock searchblock %}
+{% block codeblock %}
+<div class="body-div-4">
+
+    <!-- add_emp modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-size:xx-large;" class="modal-title" id="exampleModalLabel">Register...
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url_for('add_emp')}}" method="POST">
+                        <div class="form-group form">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" aria-describedby="name" name="fname"
+                                placeholder="Enter First Name">
+                        </div>
+                        <div class="form-group form">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" name="lname"
+                                placeholder="Enter Last Name">
+                        </div>
+                        <div class="form-group form">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter Email Address">
+                        </div>
+                        <div class="form-group form">
+                            <label for="salary">Salary</label>
+                            <input type="number" class="form-control" id="salary" name="sal" placeholder="Enter Salary">
+                        </div>
+                        <div class="form-group form">
+                            <label for="reports_to">Job</label>
+                            <input type="text" class="form-control" id="reports_to" name="job" placeholder="Enter Job">
+                        </div>
+                        <div class="form-group form">
+                            <label for="shift">Shift</label>
+                            <input type="text" class="form-control" id="shift" placeholder="Enter Shift" name="shift">
+                        </div>
+                        <div class="form-group form">
+                            <label for="phone_no">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter Phone No" name="ph_no">
+                        </div>
+                        <div class="form-group form">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" name="addr"
+                                placeholder="Enter Address">
+                        </div>
+                        <div class="form-group form">
+                            <label for="gender">City</label>
+                            <input type="text" class="form-control" id="address" name="city" placeholder="Enter City">
+                        </div>
+                        <div class="form-group form">
+                            <label for="gender">Emp ID</label>
+                            <input type="text" class="form-control" id="address" name="id" placeholder="Enter Emp ID">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="body-div-5">
+    <div class="add-button">
+        <button type="button" id="add_btn" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Employee
+        </button>
+    </div>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th scope="col">EMP ID</th>
+                <th scope="col">FNAME</th>
+                <th scope="col">LNAME</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">JOB</th>
+                <th scope="col">SHIFT</th>
+                <th scope="col">SALARY</th>
+                <th scope="col">PH_NO</th>
+                <th scope="col">ADDRESS</th>
+                <th scope="col">CITY</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in emp_data %}
+            <tr class="t-row">
+                <!-- <th scope="row">{{ emp.emp_id }}</th> -->
+                <td>{{ emp.0 }}</td>
+                <td>{{ emp.1 }}</td>
+                <td>{{ emp.2 }}</td>
+                <td>{{ emp.3 }}</td>
+                <td>{{ emp.4 }}</td>
+                <td>{{ emp.5 }}</td>
+                <td>{{ emp.6 }}</td>
+                <td>{{ emp.7 }}</td>
+                <td>{{ emp.8 }}</td>
+                <td>{{ emp.9 }}</td>
+                <td>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal{{emp.0}}">
+                        EDIT
+                    </button>
+                    <!-- <button type="button" class="btn btn-primary">EDIT</button> -->
+                    <a href="/del_emp/{{ emp.0 }}"><button class="btn btn-danger btn-xs"
+                            onclick="return confirm('Are You Sure For Delete?')">Delete</button></a>
+                </td>
+            </tr>
+            <div class="modal fade" id="exampleModal{{emp.0}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 style="font-size:xx-large;" class="modal-title" id="exampleModalLabel">Register...
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{url_for('edit_emp')}}" method="POST">
+                                <div class="form-group form">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" class="form-control" aria-describedby="name" name="fname"
+                                        value="{{emp.1}}" placeholder="Enter First Name">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" class="form-control" id="last_name" name="lname"
+                                        value="{{emp.2}}" placeholder="Enter Last Name">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="email">Email </label>
+                                    <input type="email" class="form-control" id="email" name="email" value="{{emp.3}}"
+                                        placeholder="Enter Email ">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="salary">Salary</label>
+                                    <input type="number" class="form-control" id="salary" name="sal" value="{{emp.6}}"
+                                        placeholder="Enter Salary">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="reports_to">Job</label>
+                                    <input type="text" class="form-control" id="reports_to" name="job" value="{{emp.4}}"
+                                        placeholder="Enter Job">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="shift">Shift</label>
+                                    <input type="text" class="form-control" id="shift" placeholder="Enter Shift"
+                                        name="shift" value="{{emp.5}}">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="phone_no">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="Enter Phone No"
+                                        name="ph_no" value="{{emp.7}}">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" id="address" name="addr" value="{{emp.8}}"
+                                        placeholder="Enter Address">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="gender">City</label>
+                                    <input type="text" class="form-control" id="address" name="city" value="{{emp.9}}"
+                                        placeholder="Enter City">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="gender">Gender</label>
+                                    <input type="text" class="form-control" id="address" name="gender"
+                                        value="{{emp.10}}" placeholder="Enter Gender">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="gender">Emp ID</label>
+                                    <input type="text" class="form-control" id="address" name="id" value="{{emp.0}}"
+                                        placeholder="Enter Emp ID">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-dark">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock codeblock %}

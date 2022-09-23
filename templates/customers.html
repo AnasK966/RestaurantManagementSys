@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{%block title %}
+
+
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='base_font.css') }}">
+{% endblock head %}
+
+{% block admin%}
+<h3>Hey {{admin}}!</h3>
+{% endblock admin %}
+{% block searchblock %}
+<div style="margin:10px;">
+    <form action="{{url_for('search_cust')}}" method="POST">
+        <div class="search-div" style="margin-left:450px;">
+            <input class="search-bar" name="srch_cust" type="text" placeholder="Enter Phone No.">
+            <button class="search-button"><a href="/search_cust"></a>Search</button>
+        </div>
+    </form>
+</div>
+{% endblock searchblock %}
+{% block codeblock %}
+
+<div class="body-div-4">
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-size:xx-large;" class="modal-title" id="exampleModalLabel">Add Customer
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url_for('add_cust')}}" method="POST">
+                        <div class="form-group form">
+                            <label for="first_name">Full Name</label>
+                            <input type="text" class="form-control" aria-describedby="name" name="name"
+                                placeholder="Enter First Name">
+                        </div>
+                        <div class="form-group form">
+                            <label for="phone_no">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter Phone No" name="ph_no">
+                        </div>
+                        <div class="form-group form">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" name="addr"
+                                placeholder="Enter Address">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="body-div-5">
+    <div class="add-button">
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Customer
+        </button>
+    </div>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th scope="col">CUSTOMER ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">PH_NO</th>
+                <th scope="col">ADDRESS</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cust in cust_data %}
+            <tr class="t-row">
+                <!-- <th scope="row">2</th> -->
+                <td>{{cust.0}}</td>
+                <td>{{cust.1}}</td>
+                <td>{{cust.2}}</td>
+                <td>{{cust.3}}</td>
+                <td>
+
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal{{cust.0}}">
+                        EDIT </button>
+                    <a href="/cust_order/{{cust.0}}"><button class="btn btn-success btn-xs">Place Order</button></a>
+                </td>
+            </tr>
+
+
+            <div class="modal fade" id="exampleModal{{cust.0}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 style="font-size:xx-large;" class="modal-title" id="exampleModalLabel">Update Customer
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{url_for('edit_cust')}}" method="POST">
+                                <div class="form-group form">
+                                    <label for="gender">Customer ID</label>
+                                    <input type="text" class="form-control" id="address" name="id" value="{{cust.0}}"
+                                        placeholder="Enter Customer ID">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="first_name">Full Name</label>
+                                    <input type="text" class="form-control" aria-describedby="name" name="name"
+                                        value="{{cust.1}}" placeholder="Enter First Name">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="phone_no">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="Enter Phone No"
+                                        name="ph_no" value="{{cust.2}}">
+                                </div>
+                                <div class="form-group form">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" id="address" name="addr" value="{{cust.3}}"
+                                        placeholder="Enter Address">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-dark">Save</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<!-- edit_cust -->
+
+
+{% endblock codeblock %}

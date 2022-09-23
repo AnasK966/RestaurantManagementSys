@@ -1,0 +1,175 @@
+.border {
+  border: 2px solid black;
+}
+
+body {
+  font-family: 'Mukta';
+}
+
+/* SAME HEADER CSS FOR ALL PAGES */
+.header-div-1 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-div-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.sub-div-2 {
+  padding: 10px;
+}
+
+.sub-div-2:hover {
+  background-color: #4db4db;
+  border-radius: 20px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+
+.log-out {
+  background-color: rgb(25, 101, 201);
+  border-radius: 5px;
+  padding: 13px;
+  height: 55px;
+}
+
+.log-out > h4 > a {
+  text-decoration: none;
+  color: black;
+}
+
+.log-out:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: box-shadow;
+}
+
+/* SAME HEADER CSS FOR ALL PAGES */
+
+/* SAME NAVBAR CSS FOR ALL PAGES */
+.body-div-1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.ver-div {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60px;
+  text-align: center;
+  width: 200px;
+  height: 900px;
+  padding: 7px;
+}
+
+.ver-div > li {
+  display: block;
+  padding: 15px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+
+#ver-li:hover {
+  background-color: #4da4db;
+}
+/* SAME NAVBAR CSS FOR ALL PAGES */
+
+.body-div-2 {
+  display: flex;
+  flex-direction: column;
+  width: 1664px;
+}
+
+/* SAME SEARCH BAR FOR SOME PAGES */
+.body-div-3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 600px;
+  height: 30px;
+}
+
+.search {
+  position: relative;
+  padding: 10px;
+  margin-left: 1200px;
+  /* border-radius: 20px; */
+  width: 600px;
+  height: 30px;
+  font-size: medium;
+  box-shadow: black 0px 5px 5px;
+}
+
+.search-button {
+  background-color: rgb(5, 5, 49);
+  position: relative;
+  height: 30px;
+  box-shadow: black 0px 5px 5px;
+  /* border-radius: 20px; */
+  padding: 4px;
+}
+/* SAME SEARCH BAR FOR SOME PAGES */
+
+/* EMPLOYEES MAIN BODY */
+/* .add-button {
+    margin-left: 30px;
+  } */
+
+.body-div-5 {
+  margin: 20px;
+}
+
+.t-row:hover {
+  background-color: rgb(226, 224, 224);
+}
+
+.form {
+  padding: 6px;
+  color: black;
+  font-weight: 600;
+}
+
+/* EMPLOYEES MAIN BODY */
+
+.padding {
+  padding: 2rem !important;
+}
+
+.card {
+  margin-bottom: 30px;
+  border: none;
+  -webkit-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+  -moz-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+  box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+}
+
+.card-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6f2;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 15px;
+  line-height: 26px;
+  color: #3d405c;
+  margin: 0px 0px 15px 0px;
+  font-family: 'Circular Std Medium';
+}
+
+.text-dark {
+  color: #3d405c !important;
+}

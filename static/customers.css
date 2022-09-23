@@ -1,0 +1,153 @@
+.border {
+  border: 2px solid black;
+}
+
+body {
+  font-family: 'Mukta';
+}
+
+/* SAME HEADER CSS FOR ALL PAGES */
+.header-div-1 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-div-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.sub-div-2 {
+  padding: 10px;
+}
+
+.sub-div-2:hover {
+  background-color: #4db4db;
+  border-radius: 20px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+
+.log-out {
+  background-color: rgb(25, 101, 201);
+  border-radius: 5px;
+  padding: 13px;
+  height: 55px;
+}
+
+.log-out > h4 > a {
+  text-decoration: none;
+  color: black;
+}
+
+.log-out:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: box-shadow;
+}
+
+/* SAME HEADER CSS FOR ALL PAGES */
+
+/* SAME NAVBAR CSS FOR ALL PAGES */
+.body-div-1 {
+  display: flex;
+  flex-direction: row;
+}
+.dash-card {
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+}
+
+.ver-div {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60px;
+  text-align: center;
+  width: 200px;
+  height: 900px;
+  padding: 7px;
+}
+
+.ver-div > li {
+  display: block;
+  padding: 15px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+
+#ver-li:hover {
+  background-color: #4da4db;
+}
+/* SAME NAVBAR CSS FOR ALL PAGES */
+
+.body-div-2 {
+  display: flex;
+  flex-direction: column;
+  width: 1664px;
+}
+
+/* SAME SEARCH BAR FOR SOME PAGES */
+
+.search-div {
+  margin-left: 650px;
+}
+
+.search-bar {
+  display: inline;
+  border-radius: 10px;
+  font-weight: 100;
+  height: 38px;
+  width: 300px;
+  /* margin-top: 10px; */
+}
+
+.search-bar:hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.search-button {
+  display: inline;
+  border-radius: 10px;
+  border-color: white;
+  height: 40px;
+  color: white;
+  background-color: rgb(32, 114, 221);
+}
+
+.search-button:hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+/* SAME SEARCH BAR FOR SOME PAGES */
+
+/* EMPLOYEES MAIN BODY */
+/* .add-button {
+  margin-left: 30px;
+} */
+
+.body-div-5 {
+  margin: 20px;
+}
+
+.t-row:hover {
+  background-color: rgb(226, 224, 224);
+}
+
+.form {
+  padding: 6px;
+  color: black;
+  font-weight: 600;
+}
+
+/* EMPLOYEES MAIN BODY */

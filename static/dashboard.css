@@ -1,0 +1,169 @@
+body {
+  font-family: 'Mukta';
+}
+
+.border {
+  border: 2px solid black;
+}
+
+/* SAME HEADER CSS FOR ALL PAGES */
+.header-div-1 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-div-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.sub-div-2 {
+  padding: 10px;
+}
+
+.log-out {
+  background-color: rgb(25, 101, 201);
+  border-radius: 5px;
+  padding: 13px;
+  height: 55px;
+}
+
+.log-out > h4 > a {
+  text-decoration: none;
+  color: black;
+}
+
+.log-out:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: box-shadow;
+}
+
+.sub-div-2:hover {
+  background-color: #4db4db;
+  border-radius: 20px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+/* SAME HEADER CSS FOR ALL PAGES */
+
+/* SAME NAVBAR CSS FOR ALL PAGES */
+.body-div-1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.ver-div {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60px;
+  text-align: center;
+  width: 200px;
+  height: 900px;
+  padding: 7px;
+}
+
+.ver-div > li {
+  display: block;
+  padding: 15px;
+  transition-delay: 0.03s;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+
+#ver-li:hover {
+  background-color: #4da4db;
+}
+/* SAME NAVBAR CSS FOR ALL PAGES */
+
+.body-div-2 {
+  display: flex;
+  flex-direction: column;
+  width: 1664px;
+}
+
+/* SAME SEARCH BAR FOR SOME PAGES */
+.body-div-3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.search {
+  margin-left: 200px;
+  border-radius: 20px;
+  width: 800px;
+  height: 30px;
+  font-size: large;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.search-button {
+  height: 20px;
+  border-radius: 20px;
+  padding: 8px;
+}
+/* SAME SEARCH BAR FOR SOME PAGES */
+
+/* DASHBOARD DIVS */
+
+.dash-flex-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.dash-flex-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+
+.dash-flex-3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.dash-card {
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+}
+
+.dash-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-delay: 0.01s;
+  transition-duration: 0.5s;
+  transition-property: box-shadow;
+}
+
+.dash-card-2 {
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+  margin-top: 30px;
+}
+
+.dash-card-2:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-delay: 0.01s;
+  transition-duration: 0.5s;
+  transition-property: box-shadow;
+}
+
+#dash-card-2-id {
+  margin-top: 20px;
+}
+
+/* DASHBOARD DIVS */
