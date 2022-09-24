@@ -1,0 +1,134 @@
+create table Employee (
+emp_id int(20) unique,
+fname varchar(20) not null,
+lname varchar(20) not null,
+email varchar(30) not null,
+job varchar(20) not null,
+shift varchar(20) not null,
+sal int(20) not null,
+ph_no varchar(20) not null,
+address varchar(40) not null,
+city varchar(20) not null,
+gender varchar(20) not null,
+primary key (emp_id)
+);
+
+create table Customer(
+cust_id int(20) default 0,
+fname varchar(20) not null,
+ph_no varchar(20) not null,
+address varchar(40) not null,
+primary key (cust_id)
+);
+
+create table raw_material (
+raw_id varchar(20) not null,
+Iname varchar(20) not null,
+qty_bought int(20) not null ,
+m_unit varchar(20) not null,
+unit_cost int(20) not null,
+total_cost int(20) AS (qty_bought*unit_cost),
+current_qty int(20),
+buy_date date,
+primary key (raw_id,buy_date));
+
+create table ingredients(
+i_id int not null,
+raw_id varchar(20) ,
+primary key(i_id),
+constraint FK_raw_ingredient foreign key (raw_id)  references raw_material (raw_id)
+);
+
+create table recepie(
+r_id int not null,
+Rname varchar(30),
+primary key(r_id)
+);
+
+ create table cook(
+ r_id int not null,
+ i_id int not null,
+ qty_used smallint not null,
+ constraint FK_cookreciepe foreign key (r_id) references recepie(r_id),
+ constraint FK_cookingredients foreign key (i_id) references ingredients(i_id),
+ constraint PK_cook primary key(r_id,i_id)
+ );
+
+create table products(
+prod_id varchar(10) not null ,
+r_id int not null,
+pname varchar(30) not null,
+cost int not null,
+gross_profit decimal(3,3) not null,
+total_price int as (cost+(cost*gross_profit)),
+primary key (prod_id),
+constraint FK_cookprod foreign key (r_id) references cook(r_id)
+);
+
+create table orders(
+order_id int default 0 not null,
+cust_id int not null,
+total_bill int ,
+order_date date,
+decs varchar(250),
+primary key (order_id),
+constraint FK_custorder foreign key (cust_id) references customer(cust_id)
+);
+
+
+create table prod_sell(
+order_id int not null,
+prod_id varchar(10) not null,
+qty int not null,
+primary key (order_id,prod_id),
+constraint FK_sell_order foreign key (order_id) references orders(order_id),
+constraint FK_sell_prod foreign key (prod_id) references products(prod_id)
+);
+
+insert into ingredients (i_id,raw_id) values (1,'BP1');
+insert into ingredients (i_id,raw_id) values (2,'CH1');
+insert into ingredients (i_id,raw_id) values (3,'B1');
+insert into ingredients (i_id,raw_id) values (4,'CS');
+insert into ingredients (i_id,raw_id) values (5,'SP1');
+
+insert into recepie (r_id,Rname) values (1,'Chicken Burger');
+insert into recepie (r_id,Rname) values (2,'Beef Burger');
+insert into recepie (r_id,Rname) values (3,'Double Decker');
+insert into recepie (r_id,Rname) values (4,'Chicken Crispy Burger');
+insert into recepie (r_id,Rname) values (5,'Chicken Cheese Burger');
+insert into recepie (r_id,Rname) values (6,'Steak Burger');
+insert into recepie (r_id,Rname) values (7,'Double Steak Burger');
+
+insert into cook (r_id,i_id,qty_used) values (1,2,1);
+insert into cook (r_id,i_id,qty_used) values (1,3,1);
+insert into cook (r_id,i_id,qty_used) values (2,1,1);
+insert into cook (r_id,i_id,qty_used) values (2,3,1);
+insert into cook (r_id,i_id,qty_used) values (3,1,2);
+insert into cook (r_id,i_id,qty_used) values (3,3,1);
+insert into cook (r_id,i_id,qty_used) values (4,2,1);
+insert into cook (r_id,i_id,qty_used) values (4,3,1);
+insert into cook (r_id,i_id,qty_used) values (5,2,1);
+insert into cook (r_id,i_id,qty_used) values (5,3,1);
+insert into cook (r_id,i_id,qty_used) values (5,4,2);
+insert into cook (r_id,i_id,qty_used) values (6,3,1);
+insert into cook (r_id,i_id,qty_used) values (6,4,2);
+insert into cook (r_id,i_id,qty_used) values (6,5,1);
+insert into cook (r_id,i_id,qty_used) values (7,3,1);
+insert into cook (r_id,i_id,qty_used) values (7,4,2);
+insert into cook (r_id,i_id,qty_used) values (7,5,2);
+
+
+
+insert into products (prod_id,r_id,pname,cost,gross_profit) values ('CB',1,'Chicken Burger',150,0.32);
+insert into products (prod_id,r_id,pname,cost,gross_profit) values ('BB',2,'Beef Burger',250,0.25);
+insert into products (prod_id,r_id,pname,cost,gross_profit) values ('DD',3,'Double Decker',500,0.2);
+insert into products (prod_id,r_id,pname,cost,gross_profit) values ('CCB',4,'Chicken Crispy Burger',170,0.35);
+insert into products (prod_id,r_id,pname,cost,gross_profit) values ('CChB',5,'Chicken Cheese Burger',200,0.2);
+insert into products (prod_id,r_id,pname,cost,gross_profit) values ('SB',6,'Steak Burger',300,0.48);
+insert into products (prod_id,r_id,pname,cost,gross_profit) values ('DSB',7,'Double Steak Burger',500,0.2);
+
+insert into raw_material (raw_id,Iname,qty_bought,m_unit,unit_cost,current_qty,date) values ('B1','bun',100,'pcs',20,100,'2022-07-08');
+insert into raw_material (raw_id,Iname,qty_bought,m_unit,unit_cost,current_qty,date) values ('BP1','Beef Patty',40,'pcs',200,40,'2022-07-08');
+insert into raw_material (raw_id,Iname,qty_bought,m_unit,unit_cost,current_qty,date) values ('CH1','Chicken Patty',40,'pcs',100,40,'2022-07-08');
+insert into raw_material (raw_id,Iname,qty_bought,m_unit,unit_cost,current_qty,date) values ('CS','Cheese',100,'pcs',50,100,'2022-07-08');
+insert into raw_material (raw_id,Iname,qty_bought,m_unit,unit_cost,current_qty,date) values ('SP1','Steak Patty',40,'pcs',250,40,'2022-07-08');
